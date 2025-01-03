@@ -1,7 +1,7 @@
 .sorting-visualizer-container {
-  height: 80vh;
-  width: 80%;
-  border: 1px solid #EFEFF1;
+  height: 90vh;
+  width: 80vw;
+  border: 1.5px solid #EFEFF1;
   background-color: white;
   border-radius: 30px;
 
@@ -12,10 +12,9 @@
     height: 50px;
     width: 50px;
 
-    border: 1px solid #EFEFF1;
+    border: 1.5px solid #EFEFF1;
     background-color: white;
     border-radius: 15px;
-    /* background-color: red; */
 
     position: absolute;
     top: 20px;
@@ -26,5 +25,141 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    transition: height 0.3s ease-in-out, width 0.3s ease-in-out;
+
+    &.open-tray {
+      height: calc(100% - 40px);
+      width: 40%;
+
+      border-radius: 20px;
+    }
+
+    .btn-wrapper {
+      display: block;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &.disolve {
+        display: none;
+      }
+    }
+
+  }
+}
+
+.option-tray-wrapper {
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  .conditions-wrapper {
+    width: 90%;
+    height: 90%;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+
+    .option-wrapper {
+      width: calc(50% - 10px);
+      height: calc(50% - 10px);
+
+      background-color: #F6F8FA;
+      border-radius: 15px;
+
+      .option-preview {
+        height: 80%;
+        width: 100%;
+        background-color: white;
+
+        border: 1.5px solid #EFEFF1;
+        border-radius: 15px;
+      }
+
+      .option-heading {
+        width: 100%;
+        height: 20%;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        color: #505050;
+      }
+
+    }
+  }
+
+}
+
+.options-heading {
+  width: 90%;
+  font-size: 14px;
+  text-align: left;
+  color: #888888;
+
+  /* margin-top: 0px; */
+  /* margin-bottom: 10px; */
+}
+
+.divider {
+  width: calc(100%);
+  height: 2px;
+
+  background-color: #EFEFF1;
+}
+
+.problem-size-wrapper {
+  width: 90%;
+  height: calc(10% + 10px);
+
+  background-color: #f6f8fa;
+  border-radius: 15px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  position: relative;
+  overflow: hidden;
+
+  .count {
+    height: 100%;
+    width: 20%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .highlight {
+    height: 100%;
+    width: 20%;
+
+    background-color: white;
+    border: 1.5px solid #efeff1;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    border-radius: 15px;
+    z-index: 2;
+    transition: transform 0.3s ease-in-out;
   }
 }
