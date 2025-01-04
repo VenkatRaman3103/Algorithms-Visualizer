@@ -1,5 +1,5 @@
 .sorting-visualizer-container {
-  height: 90vh;
+  height: 80vh;
   width: 80vw;
   border: 1.5px solid #EFEFF1;
   background-color: white;
@@ -186,6 +186,8 @@
     background-color: white;
     border: 1.5px solid #efeff1;
 
+    cursor: pointer;
+
     .btn-wrapper-play,
     .btn-wrapper-shuffle,
     .btn-wrapper-reset {
@@ -237,6 +239,31 @@
       width: 20px;
       border-radius: 5px;
       background-color: #D9D9D9;
+
+      /* &.sorted { */
+      /*   background-color: black; */
+      /* } */
+
     }
   }
+}
+
+.sorting-visualizer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+/* .sorting-preview-container { */
+/*   width: 100%; */
+/*   display: flex; */
+/*   justify-content: center; */
+/*   align-items: flex-end; */
+/* } */
+
+.buttons-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
