@@ -1,52 +1,64 @@
 .sorting-visualizer-container {
-  height: 80vh;
+  height: 100vh;
   width: 80vw;
-  border: 1.5px solid #EFEFF1;
-  background-color: white;
-  border-radius: 30px;
 
-  position: relative;
-  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-  .options-tray-toggle {
-    height: 50px;
-    width: 50px;
+  padding-top: 50px;
+
+  .sorting-visualizer-wrapper {
+    height: 80%;
+    width: 100%;
 
     border: 1.5px solid #EFEFF1;
     background-color: white;
-    border-radius: 15px;
+    border-radius: 30px;
 
-    position: absolute;
-    top: 20px;
-    right: 20px;
+    position: relative;
+    z-index: 1;
 
-    z-index: 2;
+    .options-tray-toggle {
+      height: 50px;
+      width: 50px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+      border: 1.5px solid #EFEFF1;
+      background-color: white;
+      border-radius: 15px;
 
-    transition: height 0.3s ease-in-out, width 0.3s ease-in-out;
+      position: absolute;
+      top: 20px;
+      right: 20px;
 
-    &.open-tray {
-      height: calc(100% - 40px);
-      width: 40%;
-
-      border-radius: 20px;
-    }
-
-    .btn-wrapper {
-      display: block;
+      z-index: 2;
 
       display: flex;
       justify-content: center;
       align-items: center;
 
-      &.disolve {
-        display: none;
-      }
-    }
+      transition: height 0.3s ease-in-out, width 0.3s ease-in-out;
 
+      &.open-tray {
+        height: calc(100% - 40px);
+        width: 40%;
+
+        border-radius: 20px;
+      }
+
+      .btn-wrapper {
+        display: block;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &.disolve {
+          display: none;
+        }
+      }
+
+    }
   }
 }
 
@@ -248,12 +260,12 @@
   }
 }
 
-.sorting-visualizer-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-}
+/* .sorting-visualizer-container { */
+/*   display: flex; */
+/*   flex-direction: column; */
+/*   align-items: center; */
+/*   padding: 20px; */
+/* } */
 
 /* .sorting-preview-container { */
 /*   width: 100%; */

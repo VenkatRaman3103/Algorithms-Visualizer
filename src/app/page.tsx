@@ -23,7 +23,13 @@ export default function Home() {
 
 					<div className="menubar-container">
 						{listOfAlgorithms.map((item) => (
-							<div className="menubar-options">
+							<div
+								className="menubar-options"
+								onClick={() => {
+									setAlgorithm(item)
+									setIsMenuBar(false)
+								}}
+							>
 								<p>{item}</p>
 							</div>
 						))}
@@ -38,7 +44,11 @@ export default function Home() {
 				</div>
 
 				<div className={`algorith-view-container ${isMenuBar ? 'minimize' : ''}`}>
-					<SortingVisualizer algorithm={algorithm} />
+					{listOfAlgorithms.map((item) => (
+						<div className={`algorith-view-wrapper`}>
+							<SortingVisualizer algorithm={algorithm} />
+						</div>
+					))}
 				</div>
 			</div>
 		</>

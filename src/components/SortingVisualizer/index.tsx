@@ -116,26 +116,28 @@ export const SortingVisualizer: React.FC = ({ algorithm }): React.JSX.Element =>
 	return (
 		<>
 			<div className="sorting-visualizer-container">
-				<Tray setIsToggleActive={setIsToggleActive} isToggleActive={isToggleActive} />
-				<div className="sorting-preview-container">
-					<div className="sorting-preview-wrapper">
-						{arr.map((num: number, ind: number) => (
-							<div
-								key={ind}
-								className={`sorting-strip ${activeIndex === ind ? 'active' : ''}`}
-								style={{
-									height: `calc(${num}0px + 300px)`,
-									backgroundColor: getBackgroundColor(ind),
-									order: `${ind}`,
-								}}
-							>
-								{num}
-							</div>
-						))}
+				<div className="sorting-visualizer-wrapper">
+					<Tray setIsToggleActive={setIsToggleActive} isToggleActive={isToggleActive} />
+					<div className="sorting-preview-container">
+						<div className="sorting-preview-wrapper">
+							{arr.map((num: number, ind: number) => (
+								<div
+									key={ind}
+									className={`sorting-strip ${activeIndex === ind ? 'active' : ''}`}
+									style={{
+										height: `calc(${num}0px + 300px)`,
+										backgroundColor: getBackgroundColor(ind),
+										order: `${ind}`,
+									}}
+								>
+									{num}
+								</div>
+							))}
+						</div>
 					</div>
 				</div>
+				<Buttons setPlay={setPlay} play={play} />
 			</div>
-			<Buttons setPlay={setPlay} play={play} />
 		</>
 	)
 }
