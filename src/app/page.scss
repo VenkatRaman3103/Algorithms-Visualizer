@@ -9,11 +9,35 @@
     height: auto;
 
     position: absolute;
+    top: 20px;
+    left: 20px;
 
     z-index: 1;
+
+    .search-wrapper {
+      width: 230px;
+      height: 50px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      padding: 10px 30px;
+
+      border: 1.5px solid #EFEFF1;
+      border-radius: 15px;
+
+      .search-label {
+        font-size: 15px;
+        color: #888888;
+      }
+    }
   }
 
   .menubar-container {
+    width: auto;
+    height: auto;
+
     position: absolute;
 
     z-index: 1;
