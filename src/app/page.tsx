@@ -23,7 +23,9 @@ export default function Home() {
 
 					<div className="menubar-container">
 						{listOfAlgorithms.map((item) => (
-							<p>{item}</p>
+							<div className="menubar-options">
+								<p>{item}</p>
+							</div>
 						))}
 					</div>
 				</div>
