@@ -136,8 +136,6 @@ export const SortingVisualizer: React.FC = ({ algorithm }): React.JSX.Element =>
 				</div>
 			</div>
 			<Buttons setPlay={setPlay} play={play} />
-			{/* <button onClick={() => setAlgorithm('insertion')}>Insertion Sort</button> */}
-			{/* <button onClick={() => setAlgorithm('merge')}>Merge Sort</button> */}
 		</>
 	)
 }
