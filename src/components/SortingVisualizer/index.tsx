@@ -4,13 +4,12 @@ import React, { useEffect, useState } from 'react'
 import './index.scss'
 import { OptionTrayToggle } from '@/assets/OptionTrayToggle'
 
-export const SortingVisualizer: React.FC = (): React.JSX.Element => {
+export const SortingVisualizer: React.FC = ({ algorithm }): React.JSX.Element => {
 	const arrTemp = [22, 14, 6, 18, 9, 21, 3, 17, 11, 2, 20, 8, 15, 19, 7, 16, 4, 13, 5, 10, 12, 1]
 	const [arr, setArr] = useState<number[]>(arrTemp)
 	const [isToggleActive, setIsToggleActive] = useState<boolean>(false)
 	const [play, setPlay] = useState<boolean>(false)
 	const [activeIndex, setActiveIndex] = useState<number | null>(null)
-	const [algorithm, setAlgorithm] = useState<'insertion' | 'merge'>('insertion')
 	const speed = 300
 
 	useEffect(() => {
@@ -103,7 +102,6 @@ export const SortingVisualizer: React.FC = (): React.JSX.Element => {
 		}
 	}, [play, algorithm])
 
-	// Debugging the active index
 	console.log('Active Index:', activeIndex)
 
 	const getBackgroundColor = (ind: number) => {
@@ -138,8 +136,8 @@ export const SortingVisualizer: React.FC = (): React.JSX.Element => {
 				</div>
 			</div>
 			<Buttons setPlay={setPlay} play={play} />
-			<button onClick={() => setAlgorithm('insertion')}>Insertion Sort</button>
-			<button onClick={() => setAlgorithm('merge')}>Merge Sort</button>
+			{/* <button onClick={() => setAlgorithm('insertion')}>Insertion Sort</button> */}
+			{/* <button onClick={() => setAlgorithm('merge')}>Merge Sort</button> */}
 		</>
 	)
 }
