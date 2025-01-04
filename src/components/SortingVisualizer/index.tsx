@@ -115,6 +115,7 @@ export const SortingVisualizer: React.FC = ({ algorithm }): React.JSX.Element =>
 
 	return (
 		<>
+			{/* <h1>{algorithm}</h1> */}
 			<div className="sorting-visualizer-container">
 				<div className="sorting-visualizer-wrapper">
 					<Tray setIsToggleActive={setIsToggleActive} isToggleActive={isToggleActive} />
