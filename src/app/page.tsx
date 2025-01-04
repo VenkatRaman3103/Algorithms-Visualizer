@@ -2,15 +2,25 @@
 import Image from 'next/image'
 import styles from './page.module.css'
 import './page.scss'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { SortingVisualizer } from '@/components/SortingVisualizer'
 import { OptionTrayToggle } from '@/assets/OptionTrayToggle'
 
 export default function Home() {
 	const [algorithm, setAlgorithm] = useState<'insertion' | 'merge'>('insertion')
-	const [isMenuBar, setIsMenuBar] = useState<boolean>()
+	const [isMenuBar, setIsMenuBar] = useState<boolean>(false)
+	const [activeAlgorithm, setActiveAlgorithm] = useState<string>('insertion')
+	const [activeAlgorithmIndex, setActiveAlgorithmIndex] = useState<number>(0)
+
+	const algorithmRefs = useRef<(HTMLDivElement | null)[]>([])
 
 	const listOfAlgorithms = ['insertion', 'merge']
+
+	useEffect(() => {
+		if (activeAlgorithmIndex !== undefined && algorithmRefs.current[activeAlgorithmIndex]) {
+			algorithmRefs.current[activeAlgorithmIndex].scrollIntoView({ behavior: 'smooth' })
+		}
+	}, [activeAlgorithmIndex])
 
 	return (
 		<>
@@ -22,13 +32,19 @@ export default function Home() {
 					</div>
 
 					<div className="menubar-container">
-						{listOfAlgorithms.map((item) => (
+						{listOfAlgorithms.map((item, ind) => (
 							<div
+								key={ind}
 								className="menubar-options"
+								onMouseEnter={() => {
+									setActiveAlgorithm(item)
+									setActiveAlgorithmIndex(ind)
+								}}
 								onClick={() => {
 									setAlgorithm(item)
 									setIsMenuBar(false)
 								}}
+								ref={(el) => (algorithmRefs.current[ind] = el)}
 							>
 								<p>{item}</p>
 							</div>
@@ -44,8 +60,12 @@ export default function Home() {
 				</div>
 
 				<div className={`algorith-view-container ${isMenuBar ? 'minimize' : ''}`}>
-					{listOfAlgorithms.map((item) => (
-						<div className={`algorith-view-wrapper ${isMenuBar ? 'minimize' : ''}`}>
+					{listOfAlgorithms.map((item, ind) => (
+						<div
+							key={ind}
+							className={`algorith-view-wrapper ${isMenuBar ? 'minimize' : ''}`}
+							ref={(el) => (algorithmRefs.current[ind] = el)}
+						>
 							<SortingVisualizer algorithm={algorithm} />
 						</div>
 					))}
