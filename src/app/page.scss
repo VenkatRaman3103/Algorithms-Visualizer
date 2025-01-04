@@ -1,26 +1,51 @@
-.algorith-view-container {
+.page-container {
   height: 100vh;
   width: 100vw;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  position: relative;
 
-  background-color: #F6F8FA;
-  border: 1.5px solid #EFEFF1;
+  .search-container {
+    width: auto;
+    height: auto;
 
-  transition: transform 0.5s ease-in-out, scale 0.5s ease-in-out, border-radius 0.5s ease-in-out;
+    position: absolute;
 
-  &.minimize {
-    scale: 0.8;
-    border-radius: 20px;
-    transform: translateX(250px);
+    z-index: 1;
+  }
+
+  .menubar-container {
+    position: absolute;
+
+    z-index: 1;
+  }
+
+  .algorith-view-container {
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #F6F8FA;
+    border: 1.5px solid #EFEFF1;
+
+    transition: transform 0.5s ease-in-out, scale 0.5s ease-in-out, border-radius 0.5s ease-in-out;
+
+    position: absolute;
+
+    z-index: 2;
+
+    &.minimize {
+      scale: 0.8;
+      border-radius: 20px;
+      transform: translateX(250px);
+    }
   }
 }
 
 .toggle-menu-btn {
-
   height: 50px;
   width: 50px;
 
@@ -32,9 +57,15 @@
   top: 20px;
   left: 20px;
 
-  z-index: 2;
+  z-index: 3;
 
   display: flex;
   justify-content: center;
   align-items: center;
+
+  transition: transform 0.5s ease-in-out;
+
+  &.moverRight {
+    transform: translateX(250px);
+  }
 }

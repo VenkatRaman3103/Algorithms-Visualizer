@@ -14,12 +14,30 @@ export default function Home() {
 
 	return (
 		<>
-			<div className="menubar-container"></div>
-			<div className="toggle-menu-btn" onClick={() => setIsMenuBar(!isMenuBar)}>
-				<OptionTrayToggle />
-			</div>
-			<div className={`algorith-view-container ${isMenuBar ? 'minimize' : ''}`}>
-				<SortingVisualizer algorithm={algorithm} />
+			<div className="page-container">
+				<div className={`search-container`}>
+					<div className={`search-wrapper`}>
+						<div className="search-label">Search the Algorithms</div>
+						<div className="search-icon"></div>
+					</div>
+
+					<div className="menubar-container">
+						{listOfAlgorithms.map((item) => (
+							<p>{item}</p>
+						))}
+					</div>
+				</div>
+
+				<div
+					className={`toggle-menu-btn ${isMenuBar ? 'moverRight' : ''}`}
+					onClick={() => setIsMenuBar(!isMenuBar)}
+				>
+					<OptionTrayToggle />
+				</div>
+
+				<div className={`algorith-view-container ${isMenuBar ? 'minimize' : ''}`}>
+					<SortingVisualizer algorithm={algorithm} />
+				</div>
 			</div>
 		</>
 	)
