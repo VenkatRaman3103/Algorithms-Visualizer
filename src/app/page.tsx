@@ -45,7 +45,7 @@ export default function Home() {
 
 				<div className={`algorith-view-container ${isMenuBar ? 'minimize' : ''}`}>
 					{listOfAlgorithms.map((item) => (
-						<div className={`algorith-view-wrapper`}>
+						<div className={`algorith-view-wrapper ${isMenuBar ? 'minimize' : ''}`}>
 							<SortingVisualizer algorithm={algorithm} />
 						</div>
 					))}
