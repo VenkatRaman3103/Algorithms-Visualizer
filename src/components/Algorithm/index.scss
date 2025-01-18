@@ -30,9 +30,23 @@
         cursor: pointer;
         padding-top: 10px;
 
+        color: #0a0a0a;
+        transition: color 0.3s ease-in-out;
+
+        &:hover {
+          color: #3b3b3b;
+        }
+
         .heading {}
 
-        .toggle-btn {}
+        .toggle-btn {
+          transform: rotate(0deg);
+          transition: transform 0.3s ease-in-out;
+
+          &.rotated {
+            transform: rotate(180deg);
+          }
+        }
       }
 
       .code-block {
@@ -43,13 +57,89 @@
         border: 1.5px solid #e9ebef;
         transition: height 0.5s ease-in-out, background-color 0.5s ease-in-out, border 0.4s ease-in-out, margin-top 0.5s ease-in-out;
 
+        position: relative;
+
         &.expand {
           height: 0px;
           background-color: #f6f8fa;
           border: 0px solid #e9ebef;
           margin-top: -5px;
         }
+
+        .language-switcher-container {
+          width: auto;
+          height: auto;
+          background-color: #f6f8fa;
+          border-radius: 12.5px;
+
+          position: absolute;
+          right: 10px;
+          top: 10px;
+
+          animation: fadeIn 0.5s ease-in-out;
+
+          .language-switcher-wrapper {
+            width: 100%;
+            height: auto;
+            display: flex;
+            gap: 10px;
+
+            .language-option {
+              width: auto;
+              height: auto;
+              padding: 10px 15px;
+
+              color: #767877;
+              border: 2px solid #f6f8fa;
+              border-radius: 11px;
+
+              font-size: 14px;
+              overflow: hidden;
+
+              cursor: pointer;
+
+              transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, transform 0.2s ease;
+
+              &:hover {
+                // background-color: #e0e3e7;
+                // transform: scale(1.05);
+                color: #0a0a0a;
+              }
+
+              &.active {
+                color: #0a0a0a;
+                background-color: #ffffff;
+                border: 2px solid #e9ebef;
+                animation: pulse 0.6s ease-in-out infinite alternate;
+              }
+            }
+          }
+        }
       }
     }
   }
 }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// @keyframes pulse {
+//   from {
+//     transform: scale(1);
+//     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+//   }
+//
+//   to {
+//     transform: scale(1.05);
+//     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+//   }
+// }
