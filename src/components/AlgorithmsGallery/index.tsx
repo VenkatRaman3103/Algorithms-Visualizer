@@ -11,6 +11,9 @@ export const AlgorithmsGallery = () => {
 					<AlgorithmsPreview />
 					<AlgorithmsPreview />
 					<AlgorithmsPreview />
+					<AlgorithmsPreview />
+					<AlgorithmsPreview />
+					<AlgorithmsPreview />
 				</div>
 			</div>
 		</>
@@ -24,6 +27,7 @@ export const AlgorithmsPreview = () => {
 				<div className="preview-wrapper">
 					<div className="topic">topic</div>
 					<div className="image"></div>
+					<div className="divider"></div>
 					<div className="heading">Heading</div>
 					<div className="description">
 						Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet veritatis
