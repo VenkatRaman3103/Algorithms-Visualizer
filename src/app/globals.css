@@ -1,11 +1,11 @@
 :root {
-	--background: #ffffff;
+	--background: #f8fafb;
 	--foreground: #171717;
 }
 
 @media (prefers-color-scheme: dark) {
 	:root {
-		--background: #ffffff;
+		--background: #f8fafb;
 		--foreground: #171717;
 	}
 }
@@ -13,6 +13,7 @@
 html,
 body {
 	max-width: 100vw;
+	scroll-behavior: smooth;
 	overflow-x: hidden;
 }
 
