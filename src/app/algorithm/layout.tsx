@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
-import './globals.css'
 
 const montserrat = Montserrat({
 	variable: '--font-montserrat',
@@ -21,7 +20,6 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={`${montserrat.variable}`}>
-				{/* <div className="gutter">{children}</div> */}
 				<div>{children}</div>
 			</body>
 		</html>

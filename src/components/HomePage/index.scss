@@ -1,12 +1,16 @@
 .hero-section-container {
-  width: 80%;
+  width: 100%;
   height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   // TODO: trye to remove the padding
   padding-top: 50px;
   padding-bottom: 50px;
 
   .hero-section-wrapper {
+    width: 80%;
     display: flex;
 
     .greeting-wrapper {
