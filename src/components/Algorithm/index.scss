@@ -54,6 +54,44 @@
         margin-top: 10px;
       }
 
+      .time-container {
+        height: auto;
+        width: fit-content;
+
+        border: 1.5px solid #e9ebef;
+        border-radius: 20px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 40px 40px 40px;
+
+        .time-wrapper {
+          width: 100%;
+          height: 100%;
+
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          .heading {
+            font-size: 20px;
+            color: #b4b7bd;
+          }
+
+          .time-complexity-graph {
+            width: 100%;
+            height: 100%;
+
+            .graph {
+              border-left: 2px solid #e9ebef;
+              border-bottom: 2px solid #e9ebef;
+            }
+          }
+        }
+
+      }
+
     }
   }
 
