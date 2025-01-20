@@ -139,11 +139,11 @@ const BinaryTreeVisual = ({ node }: { node: TreeType<string> }) => {
 					/>
 					{stack.includes(node.value) && (
 						<circle
-							r={nodeRadius + 5}
+							r={nodeRadius + 4}
 							cx={x}
 							cy={y}
 							fill="none"
-							strokeWidth="1.5"
+							strokeWidth="2.5"
 							stroke="#1da1f2"
 						/>
 					)}
@@ -164,8 +164,13 @@ const BinaryTreeVisual = ({ node }: { node: TreeType<string> }) => {
 	return (
 		<svg width={svgWidth} height={svgHeight} className="min-w-full">
 			<defs>
-				<filter id="drop-shadow" x="-50%" y="-50%" width="200%" height="200%">
-					<feDropShadow dx="4" dy="4" stdDeviation="8" flood-color="rgba(0, 0, 0, 0.2)" />
+				<filter id="drop-shadow" x="-50%" y="-50%" width="400%" height="400%">
+					<feDropShadow
+						dx="0"
+						dy="12"
+						stdDeviation="15"
+						flood-color="rgba(0, 0, 0, 0.15)"
+					/>
 				</filter>
 			</defs>
 			<Tree
