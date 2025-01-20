@@ -1,19 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { JSX, useState } from 'react'
 import './index.scss'
+import BinaryTree from '../Tree'
 
 export const Algorithm = () => {
 	const [selectedLanguage, setSelectedLanguage] = useState(1)
 	const [isCodeBlockOpen, setIsCodeBlockOpen] = useState(true)
-	const [delayedOptionsVisible, setDelayedOptionsVisible] = useState(false)
-
-	useEffect(() => {
-		if (!isCodeBlockOpen) {
-			const timer = setTimeout(() => setDelayedOptionsVisible(true), 300)
-			return () => clearTimeout(timer)
-		} else {
-			setDelayedOptionsVisible(false)
-		}
-	}, [isCodeBlockOpen])
 
 	return (
 		<div className="main-container">
@@ -21,10 +12,11 @@ export const Algorithm = () => {
 			<CodeBlock
 				setIsCodeBlockOpen={setIsCodeBlockOpen}
 				isCodeBlockOpen={isCodeBlockOpen}
-				delayedOptionsVisible={delayedOptionsVisible}
+				// delayedOptionsVisible={delayedOptionsVisible}
 				selectedLanguage={selectedLanguage}
 				setSelectedLanguage={setSelectedLanguage}
 			/>
+			<BinaryTree />
 		</div>
 	)
 }
@@ -41,7 +33,10 @@ export const IntroSection = () => {
 					Consequatur
 				</div>
 
-				<TimeComplexity />
+				<div className="complexity-overview-wrapper">
+					<TimeComplexity />
+					<SpaceComplexity />
+				</div>
 
 				<div className="divider"></div>
 			</div>
@@ -49,30 +44,92 @@ export const IntroSection = () => {
 	)
 }
 
-export const TimeComplexity = () => {
-	const data = [
-		{ x: 50, y: 250 },
-		{ x: 100, y: 200 },
-		{ x: 150, y: 100 },
-		{ x: 200, y: 150 },
-		{ x: 300, y: 100 },
-		{ x: 380, y: 50 },
-	]
+export const SpaceComplexity = () => {
 	return (
-		<div className="time-container">
-			<div className="time-wrapper">
-				<div className="heading">Time Complexity</div>
+		<>
+			<VisualizerWrapper>
+				<BarChart />
+			</VisualizerWrapper>
+		</>
+	)
+}
 
-				<div className="time-complexity-graph">
-					<MultiPointCurveWithArea data={data} />
+export const TimeComplexity = () => {
+	return (
+		<>
+			<VisualizerWrapper>
+				<MultiPointCurveWithArea />
+			</VisualizerWrapper>
+		</>
+	)
+}
+
+const BarChart = () => {
+	const data = [20, 30, 40]
+
+	return (
+		<div className="bar-chart-container">
+			<div className="bar-chart-wrapper">
+				{data.map((item: number, ind: number) => (
+					<div
+						key={ind}
+						className={`bar type-${ind + 1}`}
+						style={{ height: `${item * 5}px` }}
+					></div>
+				))}
+				<div></div>
+			</div>
+		</div>
+	)
+}
+
+type VisualizerWrapperType = {
+	children: JSX.Element
+}
+
+const VisualizerWrapper = ({ children }: VisualizerWrapperType) => {
+	return (
+		<div className="complexity-container">
+			<div className="complexity-wrapper">
+				<div className="header-wrapper">
+					<div className="heading">Time Complexity</div>
+				</div>
+
+				<div className="complexity-graph">{children}</div>
+
+				<div className="cases-wrapper">
+					<div className="cases">Scenarios :</div>
+					<div className="case">
+						<div className="dot"></div>
+						<div>Best case</div>
+					</div>
+					<div className="case">
+						<div className="dot"></div>
+						<div>Average case</div>
+					</div>
+					<div className="case">
+						<div className="dot"></div>
+						<div>Worst case</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	)
 }
 
-const MultiPointCurveWithArea = ({ data }) => {
-	const generatePath = (points) => {
+const MultiPointCurveWithArea = () => {
+	const data = [
+		{ x: 0, y: 250 },
+		{ x: 100, y: 200 },
+		{ x: 150, y: 100 },
+		{ x: 200, y: 150 },
+		{ x: 250, y: 200 },
+		{ x: 300, y: 100 },
+		{ x: 350, y: 30 },
+		{ x: 400, y: 100 },
+		{ x: 450, y: 10 },
+	]
+	const generatePath = (points: { x: number; y: number }[]) => {
 		if (points.length < 2) {
 			return ''
 		}
@@ -80,22 +137,22 @@ const MultiPointCurveWithArea = ({ data }) => {
 		const path = [`M ${points[0].x},${points[0].y}`]
 
 		for (let i = 0; i < points.length - 1; i++) {
-			let p0 = points[i]
-			let p1 = points[i + 1]
+			const p0 = points[i]
+			const p1 = points[i + 1]
 
-			let midCurve = (p0.x + p1.x) / 2
+			const midCurve = (p0.x + p1.x) / 2
 
-			let cp0x = midCurve
-			let cp0y = p0.y
-			let cp1x = midCurve
-			let cp1y = p1.y
+			const cp0x = midCurve
+			const cp0y = p0.y
+			const cp1x = midCurve
+			const cp1y = p1.y
 
 			path.push(`C ${cp0x},${cp0y} ${cp1x},${cp1y} ${p1.x},${p1.y}`)
 		}
 		return path.join(' ')
 	}
 
-	const generateAreaPath = (points) => {
+	const generateAreaPath = (points: { x: number; y: number }[]) => {
 		const curvePath = generatePath(points)
 		const lastPoint = points[points.length - 1]
 		const firstPoint = points[0]
@@ -108,7 +165,7 @@ const MultiPointCurveWithArea = ({ data }) => {
 	const areaPathData = generateAreaPath(data)
 
 	return (
-		<svg width="400" height="300" className="graph">
+		<svg width="400" height="250" className="graph">
 			<defs>
 				<linearGradient id="areaGradient" x1="0" y1="0" x2="0" y2="1">
 					<stop offset="0%" stopColor="#1da1f2 " stopOpacity="0.5" />
@@ -124,13 +181,19 @@ const MultiPointCurveWithArea = ({ data }) => {
 	)
 }
 
-export const CodeBlock = ({
+type CodeBlockType = {
+	setSelectedLanguage: React.Dispatch<React.SetStateAction<number>>
+	setIsCodeBlockOpen: React.Dispatch<React.SetStateAction<boolean>>
+	isCodeBlockOpen: boolean
+	selectedLanguage: number
+}
+
+export const CodeBlock: React.FC<CodeBlockType> = ({
 	setSelectedLanguage,
 	setIsCodeBlockOpen,
 	isCodeBlockOpen,
-	delayedOptionsVisible,
 	selectedLanguage,
-}) => {
+}): React.JSX.Element => {
 	return (
 		<div className="code-block-container">
 			<div className="code-block-wrapper">
@@ -142,10 +205,10 @@ export const CodeBlock = ({
 					<div className="toggle-btn">V</div>
 				</div>
 				<div className={`code-block ${isCodeBlockOpen ? 'expand' : ''}`}>
-					{!isCodeBlockOpen && delayedOptionsVisible && (
+					{!isCodeBlockOpen && (
 						<div className="language-switcher-container">
 							<div className="language-switcher-wrapper">
-								{Array.from({ length: 5 }).map((item, ind) => (
+								{Array.from({ length: 5 }).map((_, ind: number) => (
 									<LanguageSelector
 										key={ind}
 										selectedLanguage={selectedLanguage}
@@ -162,7 +225,17 @@ export const CodeBlock = ({
 	)
 }
 
-export const LanguageSelector = ({ setSelectedLanguage, selectedLanguage, ind }) => {
+type LanguageSelectorType = {
+	setSelectedLanguage: React.Dispatch<React.SetStateAction<number>>
+	selectedLanguage: number
+	ind: number
+}
+
+export const LanguageSelector: React.FC<LanguageSelectorType> = ({
+	setSelectedLanguage,
+	selectedLanguage,
+	ind,
+}): React.JSX.Element => {
 	return (
 		<div
 			className={`language-option ${selectedLanguage === ind + 1 ? 'active' : ''}`}
