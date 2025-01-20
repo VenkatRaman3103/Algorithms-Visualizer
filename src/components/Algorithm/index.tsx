@@ -9,6 +9,7 @@ export const Algorithm = () => {
 	return (
 		<div className="main-container">
 			<IntroSection />
+			<BinaryTree />
 			<CodeBlock
 				setIsCodeBlockOpen={setIsCodeBlockOpen}
 				isCodeBlockOpen={isCodeBlockOpen}
@@ -16,7 +17,6 @@ export const Algorithm = () => {
 				selectedLanguage={selectedLanguage}
 				setSelectedLanguage={setSelectedLanguage}
 			/>
-			<BinaryTree />
 		</div>
 	)
 }

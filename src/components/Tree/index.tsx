@@ -1,35 +1,52 @@
 import React from 'react'
+import './index.scss'
 
-const binaryTreeData = {
-	value: 'Root',
+type TreeType<T> = {
+	value: T
+	left: TreeType<T> | null
+	right: TreeType<T> | null
+}
+
+const binaryTreeData: TreeType<string> = {
+	value: 'A',
 	left: {
-		value: 'Left Child',
-		left: { value: 'Left Grandchild', left: null, right: null },
-		right: { value: 'Right Grandchild', left: null, right: null },
+		value: 'B',
+		left: { value: 'C', left: null, right: null },
+		right: { value: 'D', left: null, right: null },
 	},
 	right: {
-		value: 'Right Child',
-		left: { value: 'Left Grandchild', left: null, right: null },
+		value: 'E',
+		left: { value: 'F', left: null, right: null },
 		right: null,
 	},
 }
 
 export const BinaryTree = () => {
 	return (
-		<div>
-			<Practice node={binaryTreeData} />
+		<div className="bt-wrapper">
+			<BinaryTreeVisual node={binaryTreeData} />
 		</div>
 	)
 }
 
-export const Practice = ({ node }) => {
-	const Tree = ({ node, x, y, parentX, parentY, spacingX = 200, spacingY = 100 }) => {
-		const nodeRadius = 20
-		let leftChildNodeX = x - spacingX / 2
-		let leftChildNodeY = y + spacingY
+export const BinaryTreeVisual = ({ node }: { node: TreeType<string> }) => {
+	const strokeColor = '#dddee2'
 
-		let rightChildNodeX = x + spacingX / 2
-		let rightChildNodeY = y + spacingY
+	const Tree: React.FC<{
+		node: TreeType<string>
+		x: number
+		y: number
+		parentX: number | null
+		parentY: number | null
+		spacingX?: number
+		spacingY?: number
+	}> = ({ node, x, y, parentX, parentY, spacingX = 200, spacingY = 100 }) => {
+		const nodeRadius = 25
+		const leftChildNodeX = x - spacingX / 2
+		const leftChildNodeY = y + spacingY
+
+		const rightChildNodeX = x + spacingX / 2
+		const rightChildNodeY = y + spacingY
 
 		return (
 			<>
@@ -39,13 +56,33 @@ export const Practice = ({ node }) => {
 						y1={parentY + nodeRadius}
 						x2={x}
 						y2={y - nodeRadius}
-						stroke="#e9ebef"
+						stroke={strokeColor}
 						strokeWidth="1.5"
 					/>
 				)}
 
 				<g>
-					<circle r={nodeRadius} cx={x} cy={y} fill="white" stroke="#e9ebef" />
+					<circle
+						r={nodeRadius}
+						cx={x}
+						cy={y}
+						fill="white"
+						strokeWidth="1.5"
+						stroke={strokeColor}
+					></circle>
+
+					<circle
+						r={nodeRadius - 5}
+						cx={x}
+						cy={y}
+						fill="none"
+						strokeWidth="1"
+						stroke={'red'}
+					></circle>
+
+					<text x={x} y={y + 1} textAnchor="middle" dominantBaseline="middle">
+						{node.value}
+					</text>
 				</g>
 
 				{node.left && (
@@ -73,14 +110,7 @@ export const Practice = ({ node }) => {
 	}
 
 	return (
-		<svg
-			width={800}
-			height={800}
-			// style={{
-			// 	border: '1px solid #ddd',
-			// 	backgroundColor: '#f9f9f9',
-			// }}
-		>
+		<svg width={800} height={500}>
 			<Tree node={node} x={400} y={50} parentX={null} parentY={null} />
 		</svg>
 	)

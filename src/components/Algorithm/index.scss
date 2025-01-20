@@ -9,7 +9,8 @@
     width: 80%;
     height: auto;
     padding-top: 50px;
-    padding-bottom: 50px;
+    // padding-bottom: 50px;
+    padding-bottom: 35px;
     position: relative;
 
     .intro-section-wrapper {
@@ -124,7 +125,7 @@
               flex-direction: row;
               align-items: center;
               justify-content: space-between;
-              gap: 10px;
+              gap: 8px;
 
               .case {
                 display: flex;
