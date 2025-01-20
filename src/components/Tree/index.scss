@@ -12,3 +12,15 @@
   align-items: center;
   justify-content: center;
 }
+
+.inner-circle {
+
+  box-shadow:
+    0px 17.6px 2px -22px rgba(0, 0, 0, 0.005),
+    0px 21.1px 4.7px -22px rgba(0, 0, 0, 0.015),
+    0px 23.2px 8.4px -22px rgba(0, 0, 0, 0.029),
+    0px 25.1px 14px -22px rgba(0, 0, 0, 0.045),
+    0px 27.5px 23px -22px rgba(0, 0, 0, 0.06),
+    0px 31.4px 40.2px -22px rgba(0, 0, 0, 0.072),
+    0px 38px 87px -22px rgba(0, 0, 0, 0.08);
+}
