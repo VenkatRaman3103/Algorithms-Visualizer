@@ -2,6 +2,7 @@ import React, { JSX, useState } from 'react'
 import './index.scss'
 import BinaryTree from '../Tree'
 import { ContentBlock } from '../Content'
+import CodeBlock from '../CodeBlock'
 
 export const Algorithm = () => {
 	const [selectedLanguage, setSelectedLanguage] = useState(1)
@@ -11,14 +12,15 @@ export const Algorithm = () => {
 		<div className="main-container">
 			<IntroSection />
 			<BinaryTree />
+			<CodeBlock />
 			<ContentBlock />
-			<CodeBlock
-				setIsCodeBlockOpen={setIsCodeBlockOpen}
-				isCodeBlockOpen={isCodeBlockOpen}
-				// delayedOptionsVisible={delayedOptionsVisible}
-				selectedLanguage={selectedLanguage}
-				setSelectedLanguage={setSelectedLanguage}
-			/>
+			{/* <CodeBlock */}
+			{/* 	setIsCodeBlockOpen={setIsCodeBlockOpen} */}
+			{/* 	isCodeBlockOpen={isCodeBlockOpen} */}
+			{/* 	// delayedOptionsVisible={delayedOptionsVisible} */}
+			{/* 	selectedLanguage={selectedLanguage} */}
+			{/* 	setSelectedLanguage={setSelectedLanguage} */}
+			{/* /> */}
 		</div>
 	)
 }
@@ -183,67 +185,67 @@ const MultiPointCurveWithArea = () => {
 	)
 }
 
-type CodeBlockType = {
-	setSelectedLanguage: React.Dispatch<React.SetStateAction<number>>
-	setIsCodeBlockOpen: React.Dispatch<React.SetStateAction<boolean>>
-	isCodeBlockOpen: boolean
-	selectedLanguage: number
-}
+// type CodeBlockType = {
+// 	setSelectedLanguage: React.Dispatch<React.SetStateAction<number>>
+// 	setIsCodeBlockOpen: React.Dispatch<React.SetStateAction<boolean>>
+// 	isCodeBlockOpen: boolean
+// 	selectedLanguage: number
+// }
 
-export const CodeBlock: React.FC<CodeBlockType> = ({
-	setSelectedLanguage,
-	setIsCodeBlockOpen,
-	isCodeBlockOpen,
-	selectedLanguage,
-}): React.JSX.Element => {
-	return (
-		<div className="code-block-container">
-			<div className="code-block-wrapper">
-				<div
-					className="header-wrapper"
-					onClick={() => setIsCodeBlockOpen(!isCodeBlockOpen)}
-				>
-					<div className="heading">Code instructions</div>
-					<div className="toggle-btn">V</div>
-				</div>
-				<div className={`code-block ${isCodeBlockOpen ? 'expand' : ''}`}>
-					{!isCodeBlockOpen && (
-						<div className="language-switcher-container">
-							<div className="language-switcher-wrapper">
-								{Array.from({ length: 5 }).map((_, ind: number) => (
-									<LanguageSelector
-										key={ind}
-										selectedLanguage={selectedLanguage}
-										setSelectedLanguage={setSelectedLanguage}
-										ind={ind}
-									/>
-								))}
-							</div>
-						</div>
-					)}
-				</div>
-			</div>
-		</div>
-	)
-}
+// export const CodeBlock: React.FC<CodeBlockType> = ({
+// 	setSelectedLanguage,
+// 	setIsCodeBlockOpen,
+// 	isCodeBlockOpen,
+// 	selectedLanguage,
+// }): React.JSX.Element => {
+// 	return (
+// 		<div className="code-block-container">
+// 			<div className="code-block-wrapper">
+// 				<div
+// 					className="header-wrapper"
+// 					onClick={() => setIsCodeBlockOpen(!isCodeBlockOpen)}
+// 				>
+// 					<div className="heading">Code instructions</div>
+// 					<div className="toggle-btn">V</div>
+// 				</div>
+// 				<div className={`code-block ${isCodeBlockOpen ? 'expand' : ''}`}>
+// 					{!isCodeBlockOpen && (
+// 						<div className="language-switcher-container">
+// 							<div className="language-switcher-wrapper">
+// 								{Array.from({ length: 5 }).map((_, ind: number) => (
+// 									<LanguageSelector
+// 										key={ind}
+// 										selectedLanguage={selectedLanguage}
+// 										setSelectedLanguage={setSelectedLanguage}
+// 										ind={ind}
+// 									/>
+// 								))}
+// 							</div>
+// 						</div>
+// 					)}
+// 				</div>
+// 			</div>
+// 		</div>
+// 	)
+// }
 
-type LanguageSelectorType = {
-	setSelectedLanguage: React.Dispatch<React.SetStateAction<number>>
-	selectedLanguage: number
-	ind: number
-}
-
-export const LanguageSelector: React.FC<LanguageSelectorType> = ({
-	setSelectedLanguage,
-	selectedLanguage,
-	ind,
-}): React.JSX.Element => {
-	return (
-		<div
-			className={`language-option ${selectedLanguage === ind + 1 ? 'active' : ''}`}
-			onClick={() => setSelectedLanguage(ind + 1)}
-		>
-			option {ind + 1}
-		</div>
-	)
-}
+// type LanguageSelectorType = {
+// 	setSelectedLanguage: React.Dispatch<React.SetStateAction<number>>
+// 	selectedLanguage: number
+// 	ind: number
+// }
+//
+// export const LanguageSelector: React.FC<LanguageSelectorType> = ({
+// 	setSelectedLanguage,
+// 	selectedLanguage,
+// 	ind,
+// }): React.JSX.Element => {
+// 	return (
+// 		<div
+// 			className={`language-option ${selectedLanguage === ind + 1 ? 'active' : ''}`}
+// 			onClick={() => setSelectedLanguage(ind + 1)}
+// 		>
+// 			option {ind + 1}
+// 		</div>
+// 	)
+// }
