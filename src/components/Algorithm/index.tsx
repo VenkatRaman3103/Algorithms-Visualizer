@@ -1,6 +1,7 @@
 import React, { JSX, useState } from 'react'
 import './index.scss'
 import BinaryTree from '../Tree'
+import { ContentBlock } from '../Content'
 
 export const Algorithm = () => {
 	const [selectedLanguage, setSelectedLanguage] = useState(1)
@@ -10,6 +11,7 @@ export const Algorithm = () => {
 		<div className="main-container">
 			<IntroSection />
 			<BinaryTree />
+			<ContentBlock />
 			<CodeBlock
 				setIsCodeBlockOpen={setIsCodeBlockOpen}
 				isCodeBlockOpen={isCodeBlockOpen}
@@ -38,7 +40,7 @@ export const IntroSection = () => {
 					<SpaceComplexity />
 				</div>
 
-				<div className="divider"></div>
+				{/* <div className="divider"></div> */}
 			</div>
 		</div>
 	)
