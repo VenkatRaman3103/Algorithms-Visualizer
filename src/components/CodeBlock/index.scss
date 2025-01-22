@@ -56,11 +56,11 @@
 
       position: relative;
 
-      pre {
-        padding-left: 40px;
-        padding-top: 20px;
-        padding-bottom: 20px;
-      }
+      padding-left: 25px;
+
+      // pre {
+      //   padding: 0px !important;
+      // }
 
       &.expand {
         height: 0px;
@@ -72,8 +72,9 @@
 
         pre {
           scale: 0;
+          padding-top: 25px !important;
           // height: 0px;
-          padding: 0px;
+          // padding: 0px;
         }
 
       }
