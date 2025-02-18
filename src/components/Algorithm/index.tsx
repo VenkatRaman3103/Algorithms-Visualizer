@@ -1,26 +1,19 @@
-import React, { JSX, useState } from 'react'
+import React, { JSX } from 'react'
 import './index.scss'
 import BinaryTree from '../Tree'
 import { ContentBlock } from '../Content'
 import CodeBlock from '../CodeBlock'
+import { FormulaBlock } from '../FormulaBlock'
 
 export const Algorithm = () => {
-	const [selectedLanguage, setSelectedLanguage] = useState(1)
-	const [isCodeBlockOpen, setIsCodeBlockOpen] = useState(true)
-
 	return (
 		<div className="main-container">
 			<IntroSection />
 			<BinaryTree />
 			<CodeBlock />
 			<ContentBlock />
-			{/* <CodeBlock */}
-			{/* 	setIsCodeBlockOpen={setIsCodeBlockOpen} */}
-			{/* 	isCodeBlockOpen={isCodeBlockOpen} */}
-			{/* 	// delayedOptionsVisible={delayedOptionsVisible} */}
-			{/* 	selectedLanguage={selectedLanguage} */}
-			{/* 	setSelectedLanguage={setSelectedLanguage} */}
-			{/* /> */}
+			<FormulaBlock />
+			<ContentBlock />
 		</div>
 	)
 }
