@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './index.scss'
-import { OptionsTray } from '../OptionsTray'
-import { OptionTrayToggle } from '@/assets/OptionTrayToggle'
+import { TrayBtn } from '../Buttons/TrayBtn'
+import { Controls } from '../Buttons/Controls'
 
 type TreeType<T> = {
 	value: T
@@ -12,7 +12,6 @@ type TreeType<T> = {
 const strokeColor = '#dddee2'
 
 export const BinaryTree = () => {
-	const [isToggleActive, setIsToggleActive] = useState<boolean>(false)
 	const binaryTreeData: TreeType<string> = {
 		value: 'A',
 		left: {
@@ -36,44 +35,28 @@ export const BinaryTree = () => {
 			<div className="tree-container">
 				<div className="tree-wrapper">
 					<BinaryTreeVisual node={binaryTreeData} />
-					<div className="array-list-container">
-						<div className="array-list-wrapper">
-							<div className="element">0</div>
-							<div className="element">1</div>
-							<div className="element">2</div>
-							<div className="element">3</div>
-							<div className="element">4</div>
-							<div className="element">5</div>
-							<div className="element">6</div>
-						</div>
-					</div>
-
-					<div
-						className={`options-tray-toggle ${isToggleActive ? 'open-tray' : ''}`}
-						onMouseEnter={() => setIsToggleActive(true)}
-						onMouseLeave={() => setIsToggleActive(false)}
-					>
-						{!isToggleActive ? (
-							<div className={`btn-wrapper ${isToggleActive ? 'disolve' : ''}`}>
-								<OptionTrayToggle />
-							</div>
-						) : (
-							<OptionsTray />
-						)}
-					</div>
+					<TrayBtn />
+					<ArrayVisual />
 				</div>
-
-				<div className="controls-container">
-					<div className="controls-wrapper">
-						<div className="reset btn">reset</div>
-						<div className="backward btn">backward</div>
-						<div className="play-pause btn">play</div>
-						<div className="forward btn">forward</div>
-						<div className="shuffle btn end">shuffle</div>
-					</div>
-				</div>
+				<Controls />
 			</div>
 		</>
+	)
+}
+
+const ArrayVisual = () => {
+	return (
+		<div className="array-list-container">
+			<div className="array-list-wrapper">
+				<div className="element">0</div>
+				<div className="element">1</div>
+				<div className="element">2</div>
+				<div className="element">3</div>
+				<div className="element">4</div>
+				<div className="element">5</div>
+				<div className="element">6</div>
+			</div>
+		</div>
 	)
 }
 
@@ -233,5 +216,3 @@ const BinaryTreeVisual = ({ node }: { node: TreeType<string> }) => {
 		</svg>
 	)
 }
-
-export default BinaryTree

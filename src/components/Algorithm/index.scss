@@ -107,7 +107,7 @@
               width: 100%;
               height: 100%;
 
-              border: 2px solid #e9ebef;
+              border: 1px solid #e9ebef;
               background-color: white;
               padding: 20px;
               border-radius: 15px;
@@ -126,7 +126,8 @@
               display: flex;
               flex-direction: row;
               align-items: center;
-              justify-content: space-between;
+              // justify-content: space-between;
+              justify-content: center;
               gap: 8px;
 
               .case {

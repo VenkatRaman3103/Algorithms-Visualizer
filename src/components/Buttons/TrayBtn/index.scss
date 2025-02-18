@@ -1,0 +1,40 @@
+.options-tray-toggle {
+  height: 50px;
+  width: 50px;
+
+  border: 1.5px solid #EFEFF1;
+  background-color: white;
+  border-radius: 15px;
+
+  position: absolute;
+  top: 20px;
+  right: 20px;
+
+  z-index: 2;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: height 0.3s ease-in-out, width 0.3s ease-in-out;
+
+  &.open-tray {
+    height: calc(100% - 40px);
+    width: 40%;
+
+    border-radius: 20px;
+  }
+
+  .btn-wrapper {
+    display: block;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &.disolve {
+      display: none;
+    }
+  }
+
+}
