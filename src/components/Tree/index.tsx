@@ -38,7 +38,6 @@ export const BinaryTree = () => {
 					<TrayBtn />
 					<ArrayVisual />
 				</div>
-				<Controls />
 			</div>
 		</>
 	)

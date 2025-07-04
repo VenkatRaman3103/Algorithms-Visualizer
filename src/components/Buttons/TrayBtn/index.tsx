@@ -1,6 +1,7 @@
-import { OptionsTray, OptionTrayToggle } from '@/components/OptionsTray'
 import { useState } from 'react'
 import './index.scss'
+import { OptionTrayToggle } from '@/assets/OptionTrayToggle'
+import { OptionsTray } from '@/components/OptionsTray'
 
 export const TrayBtn = () => {
 	const [isToggleActive, setIsToggleActive] = useState<boolean>(false)
