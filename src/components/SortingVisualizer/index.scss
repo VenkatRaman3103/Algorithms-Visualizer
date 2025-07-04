@@ -5,6 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 
   .sorting-wrapper {
     width: 80%;
@@ -19,6 +20,152 @@
       background-color: grey;
       width: 20px;
       border-radius: 10px;
+    }
+  }
+}
+
+.sorting-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+
+  .button-container {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+
+    .sort-button {
+      padding: 8px 16px;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+
+      &:disabled {
+        cursor: not-allowed;
+        opacity: 0.7;
+      }
+
+      &.bubble-sort {
+        background-color: #4CAF50;
+      }
+
+      &.selection-sort {
+        background-color: #2196F3;
+      }
+
+      &.insertion-sort {
+        background-color: #FF9800;
+      }
+
+      &.quick-sort {
+        background-color: #9C27B0;
+      }
+
+      &.merge-sort {
+        background-color: #F44336;
+      }
+
+      &.heap-sort {
+        background-color: #607D8B;
+      }
+
+      &.reset-button {
+        background-color: #795548;
+      }
+    }
+  }
+
+  .speed-container {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+    .speed-slider {
+      width: 200px;
+    }
+  }
+
+  .algorithm-status {
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .sorting-wrapper {
+    display: flex;
+    align-items: flex-end;
+    height: 400px;
+    position: relative;
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 8px;
+
+    .strip {
+      width: 40px;
+      background-color: #3498db;
+      margin: 0 2px;
+      position: absolute;
+      bottom: 20px;
+      transform: translateX(0px);
+      transition: all 0.3s ease-in-out;
+      border-radius: 4px 4px 0 0;
+      border: 1px solid #2980b9;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 12px;
+      padding-bottom: 5px;
+
+      &.comparing {
+        background-color: #44ff44;
+      }
+
+      &.selected {
+        background-color: #ff4444;
+      }
+    }
+  }
+
+  .legend {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+
+    .legend-items {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+
+      .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        .legend-color {
+          width: 20px;
+          height: 20px;
+          border-radius: 4px;
+
+          &.normal {
+            background-color: #3498db;
+          }
+
+          &.comparing {
+            background-color: #44ff44;
+          }
+
+          &.selected {
+            background-color: #ff4444;
+          }
+        }
+      }
     }
   }
 }

@@ -5,12 +5,18 @@ import { ContentBlock } from '../Content'
 import CodeBlock from '../CodeBlock'
 import { FormulaBlock } from '../FormulaBlock'
 import { SortingVisualizer } from '../SortingVisualizer'
+import { TrayBtn } from '../Buttons/TrayBtn'
 
 export const Algorithm = () => {
 	return (
 		<div className="main-container">
 			<IntroSection />
-			<SortingVisualizer />
+			<div className="tree-container">
+				<div className="tree-wrapper">
+					<SortingVisualizer />
+					<TrayBtn />
+				</div>
+			</div>
 			<BinaryTree />
 			<CodeBlock />
 			<ContentBlock />
