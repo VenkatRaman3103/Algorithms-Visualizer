@@ -6,11 +6,13 @@ import CodeBlock from '../CodeBlock'
 import { FormulaBlock } from '../FormulaBlock'
 import { Sorting } from '../SortingVisualizer'
 import { Pathfinder } from '../PathFinder'
+import { Searching } from '../Searching'
 
 export const Algorithm = () => {
 	return (
 		<div className="main-container">
 			<IntroSection />
+			<Searching />
 			<Pathfinder />
 			<Sorting />
 			<BinaryTree />
